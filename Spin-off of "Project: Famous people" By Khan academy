@@ -1,0 +1,47 @@
+create table people (
+    id integer primary key autoincrement,             
+    full_name text, 
+    email_id text, 
+    phone_number integer, 
+    DOB integer );
+
+insert into people (full_name, email_id, phone_number, DOB) values ("Karthik Varma", "karthikvarma@gmail.com",9800092888,1995);
+insert into people (full_name, email_id, phone_number, DOB) values ("Priyanka Mohan", "priyankamohan@gmail.com",9834092288,1997);
+insert into people (full_name, email_id, phone_number, DOB) values ("Samantha Ruth Prabhu", "samantharprabhu@gmail.com",9833392888,1992);
+insert into people (full_name, email_id, phone_number, DOB) values ("Naga Chaitanya", "nagachaitanya@gmail.com",9805692666,1990);
+insert into people (full_name, email_id, phone_number, DOB) values ("Prabhas Raju", "prabhasraju@gmail.com",9889092990,1987);
+insert into people (full_name, email_id, phone_number, DOB) values ("Anushka Shetty", "anushkashetty@gmail.com",9887692678,1990);
+
+create table acting (
+    id integer primary key autoincrement, 
+    movies text, 
+    released_year integer, 
+    released_language text);
+
+insert into acting (movies, released_year, released_language) values ("Interstellar",2015, "English");
+insert into acting (movies, released_year, released_language) values ("Doctor",2021,"Tamil");
+insert into acting (movies, released_year, released_language) values ("Family Man",2021, "Hindi");
+insert into acting (movies, released_year, released_language) values ("Majili",2018,"Telugu");
+insert into acting (movies, released_year, released_language) values ("Darling",2012,"Telugu");
+insert into acting (movies, released_year, released_language) values ("Arundhati",2013,"Telugu");
+
+
+create table married_to (
+    id integer primary key autoincrement,
+    person1_id integer,
+    person2_id integer);
+
+insert into married_to(person1_id,person2_id) values (1,2);
+insert into married_to(person1_id,person2_id) values (4,3);
+insert into married_to(person1_id,person2_id) values (5,6);
+
+/* This query will give you Movies they acted in and released language. Join used is explicit join*/
+
+select people.full_name as Actor_name, acting.movies as Movie_name, acting.released_language as Language from people join acting on people.id = acting.id;
+
+
+/* This query will give you who is married to whom. Here both the joins are used, expllicit and self join*/
+
+select a.full_name as Husband,b.full_name as Wife from married_to join people a on married_to.person1_id = a.id
+join people b on married_to.person2_id = b.id;
+
