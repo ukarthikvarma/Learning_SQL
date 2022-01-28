@@ -1,0 +1,15 @@
+create table clothing_store (id integer primary key, item_name text, price integer,  quantity integer);
+
+insert into clothing_store values (1, "T-Shirts", 100, 25);
+insert into clothing_store values (2, "Shirts", 350, 30);
+insert into clothing_store values (3, "Trousers", 750, 15);
+insert into clothing_store values (4, "Jeans", 1150, 35);
+insert into clothing_store values (5, "Inner Wear", 250, 60);
+
+select item_name from clothing_store order by price;
+
+select item_name, sum(price*quantity) as total_order_value from clothing_store group by item_name order by total_order_value;
+
+
+
+
